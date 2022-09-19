@@ -1,10 +1,10 @@
 import './App.css';
-import Serach from './search";'
+import SearchLeauge from './components/SearchLeague';
 
 function App() {
   return (
     <div className="App">
-
+      <SearchLeauge placeholder={'Search league ID...'}/>
     </div>
   );
 }
