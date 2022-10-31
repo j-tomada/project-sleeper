@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import './SearchLeague.css'
 
 export default function SearchLeague ({ placeholder }) {
     const [leagueID, setLeagueID] = useState("")
+    const [latestWeek, setLatestWeek] = useState(0)
+    const [leagueSubmitted, setLeagueSubmitted] = useState(false)
+    const [roster, setRoster] = useState([])
+
+    useEffect(() => {
+        fetch('https://api.sleeper.app/v1/state/nfl')
+        .then(response => response.json())
+        .then(data => {
+            setLatestWeek(data.week - 1)
+            console.log(latestWeek)
+        })
+    }, [])
 
     const HandleLeagueID = (event) => {
         const input = event.target.value
-        if (input != leagueID) {
+        if (input !== leagueID) {
             setLeagueID(input)
             console.log(leagueID);
         }
