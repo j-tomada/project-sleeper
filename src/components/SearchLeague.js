@@ -12,10 +12,17 @@ export default function SearchLeague ({ placeholder }) {
         }
     }
     
-    function ConnectToLeague() {
-        fetch(`https://api.sleeper.app/v1/league/${leagueID}/rosters`).then((response) => {
+    async function ConnectToLeague() {
+        if (roster.length > 0) {
+            setRoster([])
+        }
+        await fetch(`https://api.sleeper.app/v1/league/${leagueID}/rosters`).then((response) => {
             if (response.ok) {
                 console.log(response.json())
+                CalculatePerWeek()
+                setLeagueSubmitted(true)
+                console.log(roster)
+                console.log(latestWeek)
             }
             else {
                 throw 'Error getting league'
