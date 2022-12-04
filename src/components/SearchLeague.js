@@ -125,11 +125,13 @@ export default function SearchLeague ({ placeholder }) {
     }
 
     function renderAllQuarters() {
+        //17 weeks of football
+        const MAX_QUARTERS = 17 / 4
         return (    
-            Array.from({length: 2})
+            Array.from({length: MAX_QUARTERS})
                 .map((_, index) => (
                     <div>
-                        <header className='quarterlyHeader'>Quarter {index}</header>
+                        <header className='quarterlyHeader'>Quarter {index + 1}</header>
                         <div className='quarterlyTotals'>{renderSingleQuarter(index)}</div>
                     </div>
 

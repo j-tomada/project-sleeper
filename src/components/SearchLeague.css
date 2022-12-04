@@ -7,10 +7,12 @@
 }
 
 .quarterlyHeader {
+    margin: 5px;
     color: white;
     font-size: 50px;
 }
 
 .quarterlyTotals {
+    margin: 5px;
     color: white;
 }
